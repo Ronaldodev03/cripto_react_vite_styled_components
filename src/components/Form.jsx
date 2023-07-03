@@ -4,6 +4,9 @@ import styled from "@emotion/styled";
 import Error from "./Error";
 import useSelectMonedas from "../hooks/useSelectMonedas";
 import { monedas } from "../data/monedas";
+
+// |Start of Styled Components
+
 const InputSubmit = styled.input`
   background-color: #9497ff;
   border: none;
@@ -21,16 +24,27 @@ const InputSubmit = styled.input`
     cursor: pointer;
   }
 `;
+// ||End of Styled Components
 
-const Form = ({ setMonedas, error, setError }) => {
+const Form = ({ setMonedas }) => {
+  // | START STATES:
+
   const [criptos, setCriptos] = useState([]);
-
+  // The array that is passed as parameter to the useSelectMonedas hook is in the file 'data', that's gonna create a select which options will be the elements in the array.
+  // SelectMoneda will be called in the return for the 'Form' component, it's gonna be the selector.
   const [moneda, SelectMoneda] = useSelectMonedas("Elige tu Moneda", monedas);
+  // The array that is passed as parameter to the useSelectMonedas hook comes from info taken in the useEffect logic below.
+  // SelectCritomoneda will be called in the return for the 'Form' component, it's gonna be the selector.
   const [criptomoneda, SelectCriptomoneda] = useSelectMonedas(
     "Elige Criptomoneda",
     criptos
   );
-  console.log(moneda);
+  //State for the error (used for showing data in the UI conditionally).
+  const [error, setError] = useState(false);
+
+  // | END STATES:
+
+  //useEffect for taking the data from the API, the data is the 20 most used cryptocurrencies, it will be saved in the 'criptos' variable.
   useEffect(() => {
     const consultarAPI = async () => {
       const URL =

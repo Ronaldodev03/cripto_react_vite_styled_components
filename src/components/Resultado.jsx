@@ -1,5 +1,8 @@
 /* eslint-disable react/prop-types */
 import styled from "@emotion/styled";
+
+// |Start of Styled Components
+
 const ResultadoDiv = styled.div`
   color: #fff;
   font-family: "lato", sans-serif;
@@ -27,6 +30,8 @@ const Precio = styled.p`
     font-weight: 700;
   }
 `;
+
+// ||End of Styled Components
 
 const Resultado = ({ resultado }) => {
   const { PRICE, HIGHDAY, LOWDAY, CHANGEPCT24HOUR, IMAGEURL, LASTUPDATE } =

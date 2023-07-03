@@ -16,6 +16,8 @@ const Select = styled.select`
   padding: 14px;
   border-radius: 10px;
 `;
+
+// 'label' is a text and 'opciones' is an array of object.
 const useSelectMonedas = (label, opciones) => {
   const [state, setState] = useState("");
 
@@ -34,4 +36,5 @@ const useSelectMonedas = (label, opciones) => {
   );
   return [state, selectMonedas];
 };
+// This is returnin the selected opcion in the selector 'state' and a component 'selectMonedas'.
 export default useSelectMonedas;
